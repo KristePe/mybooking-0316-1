@@ -14,7 +14,7 @@ const Photo = ({photo, setPhotos}) => {
 
     return (
         <div>
-            <img src="" alt="photo.photo"/>
+            <img src={photo.photo} alt=""/>
             <button onClick={deletePhoto}>Delete</button>
         </div>
     );

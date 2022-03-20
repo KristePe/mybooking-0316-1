@@ -18,10 +18,12 @@ function App() {
 
     const [user, setUser] = useState({})
     const [apartments, setApartments] = useState([])
+    const [posts, setPosts] = useState([])
+    const [error, setError] = useState(null)
 
   return (
     <div className="background">
-    <MainContext.Provider value={{user, setUser, apartments, setApartments}}>
+    <MainContext.Provider value={{user, setUser, apartments, setApartments, error, setError, posts, setPosts}}>
           <BrowserRouter>
             <Toolbar/>
             <Routes>

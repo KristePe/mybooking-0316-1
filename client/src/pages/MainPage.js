@@ -7,7 +7,6 @@ const MainPage = () => {
 
     return (
         <div className="d-flex center">
-            <h1>MAIN PAGE</h1>
 
             <div className="card">
                 <p>If you have an account</p>
@@ -15,7 +14,7 @@ const MainPage = () => {
             </div>
             <p>or</p>
             <div className="card">
-                <p>If you don't have an account</p>
+                <p>If you are new</p>
                 <div>REGISTER</div>
             </div>
             {apartments.map((x, i) =>

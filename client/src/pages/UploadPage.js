@@ -6,14 +6,32 @@ import {useNavigate} from "react-router-dom";
 
 const UploadPage = () => {
 
-    const {user, apartments,setApartments} = useContext(MainContext)
+    const {user, apartments,setApartments, error, setError, setPosts} = useContext(MainContext)
 
     const [photos, setPhotos] = useState([])
 
-    // const photos = useRef()
+    const photoUrl = useRef()
     const description = useRef()
     const city = useRef()
     const price = useRef()
+
+    const nav = useNavigate()
+
+    function addPhoto() {
+        const photo = {
+            photo: photoUrl.current.value,
+            userId: localStorage.getItem("userId")
+        }
+
+        http.post(photo, "/uploadPhoto").then(data => {
+            if (!data.success) {
+                setError(data.message)
+            } else {
+                setError(null)
+                setPhotos(data.photos)
+            }
+        })
+    }
 
     function upload() {
         const newApartment = {
@@ -24,6 +42,21 @@ const UploadPage = () => {
             owner: user.email
         }
 
+/////////////////////////
+
+        http.post(newApartment, "/uploadPost").then(data => {
+            console.log(data)
+            if (!data.success) {
+                setError(data.message)
+            } else {
+                setError(null)
+                setPosts(data.posts)
+                nav("/")
+            }
+        })
+
+
+        //////////////////////////
 
         const options = {
             method: "POST",
@@ -45,11 +78,17 @@ const UploadPage = () => {
 
         <div className="d-flex center">
             <div className="apartmentCard">
-                <input ref={photos} type="text" placeholder="photo"/>
+                <div>
+                    <PhotoPlace photos={photos} setPhotos={setPhotos}/>
+                    <input ref={photoUrl} type="text" placeholder="photo"/>
+                    <button onClick={addPhoto}>Add</button>
+                </div>
+
                 <input ref={description} type="text" placeholder="description"/>
                 <input ref={city} type="text" placeholder="city"/>
                 <input ref={price} type="text" placeholder="price"/>
                 <button onClick={upload}>Upload</button>
+                {error && <h3>{error}</h3>}
             </div>
         </div>
 

@@ -1,4 +1,4 @@
-// const {v4: uid} = require("uuid")
+const {v4: uid} = require("uuid")
 const userSchema = require('../schemas/userSchema')
 const apartmentSchema = require('../schemas/apartmentSchema')
 
@@ -26,6 +26,7 @@ module.exports = {
 
         const user = await userSchema.findOne({email: email});
 
+
         res.send({inform: 'userLogged, ok', userId: user._id, admin: user.isAdmin}) //siuncia atsakyma tinklapiui
     },
 
@@ -46,4 +47,29 @@ module.exports = {
 
         res.send({inform: 'apartment uploaded, ok', apartment: newApartment}) //siuncia atsakyma tinklapiui
     },
+
+
+    uploadPhoto: async (req, res) => {
+        const {photo, userId: _id} = req.body
+
+        const userUpload = await userSchema.findOne({_id})
+
+        if (userUpload.isAdmin === true) {
+            const photoToUpload = {
+                photo,
+                id: uid()
+            }
+            photo.push(photoToUpload)
+            res.send({success: true, photo})
+        } else {
+            return res.send({success: false, message: "posts may be uploaded only by admin"})
+        }
+    },
+    deletePhoto: async (req, res) => {
+        const {id} = req.body
+        photos = photos.filter(x => x.id !== id)
+
+        res.send(photos)
+    },
+
 }

@@ -1,0 +1,100 @@
+.d-flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.apartmentCard{
+  width: 400px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(60deg, #abecd6 0%, #96fbd1 100%);
+  border-radius: 10px;
+ align-items: center;
+}
+
+.apartmentCard input {
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  border: none;
+  margin: 5px;
+  align-content: center;
+}
+
+.apartmentCard button {
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
+  border: none;
+}
+
+.toolbar {
+  height: 17vh;
+  /*display: flex;*/
+  background-image: linear-gradient(60deg, #9c9b9d 0%, #3c3a3a 100%);
+  align-items: center;
+}
+
+.toolbar button {
+  height: 40px;
+  width: 150px;
+  background-color: #abecd6;
+ /*border-radius: 5px;*/
+  border: none;
+  cursor: pointer;
+}
+
+.toolbar button:hover {
+background-color: #f1f4f3;
+}
+
+.card {
+  width: 400px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(60deg, #abecd6 0%, #96fbd1 100%);
+  border-radius: 10px;
+  align-items: center;
+}
+
+.card input {
+  width: 250px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 5px;
+  border: none;
+  margin: 5px;
+  align-content: center;
+}
+
+.center {
+  justify-content: center;
+}
+
+h1 {
+  color: #abecd6;
+}
+
+.sp-around {
+ justify-content: space-around;
+}
+
+.background {
+  background-color: #e5e5e5;
+  height: 100vh;
+  flex-wrap: wrap;
+
+}
+
+.photoBox {
+
+}
